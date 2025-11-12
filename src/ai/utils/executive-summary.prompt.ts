@@ -23,20 +23,20 @@ Using the input data:
 #############################################
 You MUST return **only** this exact HTML structure (Tailwind included):
 
-<h1 className="text-2xl font-bold mb-4">Executive Summary</h1>
-<ul className="list-disc list-inside space-y-2 text-sm">
+<h1 class="text-2xl font-bold mb-4">Executive Summary</h1>
+<ul class="list-disc list-inside space-y-2 text-sm">
   The highest engaged group with{' '}
-  <span className="font-bold text-primary text-lg">45% (90 users)</span
+  <span class="font-bold text-primary text-lg">45% (90 users)</span
   >{' '} significantly outweighing the{' '}
-  <span className="font-bold text-primary text-lg">37% (74 users) </span>
+  <span class="font-bold text-primary text-lg">37% (74 users) </span>
   moderately active group. The Least Active segment at{' '}
-  <span className="font-bold text-primary text-lg">18% (36 users)</span
+  <span class="font-bold text-primary text-lg">18% (36 users)</span
   >{' '} is the primary focus area.
   <br />
-  <span className="font-bold text-black text-lg">Action:</span>
+  <span class="font-bold text-black text-lg">Action:</span>
   Target these 36 users immediately with a re-engagement campaign centered
   around{' '}
-  <span className="font-bold text-primary text-lg">'New York'</span
+  <span class="font-bold text-primary text-lg">'New York'</span
   >, as the top users' focus on this topic confirms its high value.
 </ul>
 
@@ -46,6 +46,7 @@ Where:
 - You may use <b>, <i>, <ul>, <li>, and <span> ONLY inside the paragraph.
 - DO NOT add <h2>, <h3>, <p>, <div>, <br>, markdown, backticks, comments, or any other tags.
 - DO NOT change the structure of <h1> or <ul>.
+- Use 'class' attributes exactly as specified since we are going to inject HTML in a react+tailwind rendered page.
 - DO NOT create multiple sentences beyond ~3 concise sentences.
 
 #############################################
