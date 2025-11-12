@@ -46,6 +46,8 @@ Where:
 - You may use <b>, <i>, <ul>, <li>, and <span> ONLY inside the paragraph.
 - DO NOT add <h2>, <h3>, <p>, <div>, <br>, markdown, backticks, comments, or any other tags.
 - DO NOT change the structure of <h1> or <ul>.
+- Strictly do not generate characters like '\n' or {" "} which could be printed on html page.
+- Strictly always generate such content where you can use <span> elements for words within sentences by leveraging the classes of tailwind as provided in the above example.
 - Use 'class' attributes exactly as specified since we are going to inject HTML in a react+tailwind rendered page.
 - DO NOT create multiple sentences beyond ~3 concise sentences.
 
