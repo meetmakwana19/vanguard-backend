@@ -18,6 +18,7 @@
 
 import { GoogleGenAI } from '@google/genai';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Response } from 'express';
 
 @Injectable()
 export class GeminiClientProvider {
@@ -61,18 +62,29 @@ export class GeminiClientProvider {
   async generateStructuredResponse(prompt: string): Promise<any> {
     try {
       if (this.client) {
-        // The SDK expects "contents" (string or array); we send as single content string.
-        // We pass a lightweight config if needed. We avoid function-calling here, we simply request content.
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
         const call = await this.client.models.generateContent({
+          // const call = await this.client.models.generateContentStream({
           model: this.model,
           contents: prompt,
-          // Additional config (tools / function calling) could be added here in future.
+          config: {
+            temperature: 0.1,
+            systemInstruction:
+              'You are an expert data analyst. Your know everything about Contentstack and Lytics audience screenining platform.', // for more tailored outputs
+            thinkingConfig: {
+              thinkingBudget: 0, // Disables thinking
+            },
+          },
         });
 
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
         const responseText = call?.text || '';
         console.log('call result -- ', responseText);
+
+        // for await (const chunk of call) {
+        //   // Process each chunk as it arrives
+        //   console.log('Received chunk:', chunk.text);
+        // }
 
         return responseText;
 
@@ -113,6 +125,41 @@ export class GeminiClientProvider {
       throw new InternalServerErrorException(
         `Gemini provider error: ${message}`,
       );
+    }
+  }
+
+  /** ✅ STREAMING VERSION (Express-ready) */
+  async streamResponse(prompt: string, res: Response): Promise<void> {
+    try {
+      //   const modelList = await this.client.models.list();
+      //   console.log('Available models: ', modelList);
+
+      const stream = await this.client.models.generateContentStream({
+        model: this.model,
+        contents: prompt,
+        config: {
+          temperature: 1,
+          thinkingConfig: { thinkingBudget: 0 },
+        },
+      });
+
+      for await (const chunk of stream) {
+        const text = chunk?.text || '';
+        console.log('chunk -- ', text);
+
+        if (text) {
+          res.write(text);
+          //   await new Promise((r) => setTimeout(r, 1000)); // add delay to visualize streaming
+        }
+      }
+
+      res.end();
+    } catch (err) {
+      res.write(
+        '\n[STREAM ERROR]: ' +
+          (err instanceof Error ? err.message : String(err)),
+      );
+      res.end();
     }
   }
 }
