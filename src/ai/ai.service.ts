@@ -1,6 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Response } from 'express';
+import * as fs from 'fs';
+import * as path from 'path';
 import { GeminiClientProvider } from './providers/gemini.client.provider';
+import { ExecutiveSummaryPromptBuilder } from './utils/executive-summary.prompt';
 
 @Injectable()
 export class AiService {
@@ -14,9 +17,14 @@ export class AiService {
 
   // streaming
   async streamStructuredResponse(res: Response): Promise<void> {
-    return await this.geminiClientProvider.streamResponse(
-      'Write a 500 word essay about NestJS streaming apis.',
-      res,
+    // Load and parse the JSON file
+    const jsonFilePath = path.join(process.cwd(), 'src/data/set.json');
+    const jsonData: unknown = JSON.parse(fs.readFileSync(jsonFilePath, 'utf8'));
+
+    const prompt = ExecutiveSummaryPromptBuilder.buildUserAnalyticsPrompt(
+      jsonData as any[],
     );
+
+    return await this.geminiClientProvider.streamResponse(prompt, res);
   }
 }

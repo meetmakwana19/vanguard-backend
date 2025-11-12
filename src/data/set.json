@@ -1,0 +1,62 @@
+[
+  {
+    "email": "arjun.patel@example.com",
+    "mostVisitedTopic": "Tokyo",
+    "moderatelyVisitedTopic": "Kyoto",
+    "leastVisitedTopic": "San Diego"
+  },
+  {
+    "email": "mia.fernandez@example.com",
+    "mostVisitedTopic": "Amsterdam",
+    "moderatelyVisitedTopic": "Berlin",
+    "leastVisitedTopic": "Seoul"
+  },
+  {
+    "email": "liam.shah@example.com",
+    "mostVisitedTopic": "New York",
+    "moderatelyVisitedTopic": "Chicago",
+    "leastVisitedTopic": "Bali"
+  },
+  {
+    "email": "sara.kapoor@example.com",
+    "mostVisitedTopic": "Los Angeles",
+    "moderatelyVisitedTopic": "Paris",
+    "leastVisitedTopic": "Madrid"
+  },
+  {
+    "email": "noah.murthy@example.com",
+    "mostVisitedTopic": "Seoul",
+    "moderatelyVisitedTopic": "Tokyo",
+    "leastVisitedTopic": "San Francisco"
+  },
+  {
+    "email": "emma.desai@example.com",
+    "mostVisitedTopic": "Bali",
+    "moderatelyVisitedTopic": "Phuket",
+    "leastVisitedTopic": "Rome"
+  },
+  {
+    "email": "vivaan.rana@example.com",
+    "mostVisitedTopic": "Venice",
+    "moderatelyVisitedTopic": "Florence",
+    "leastVisitedTopic": "Barcelona"
+  },
+  {
+    "email": "isabella.chou@example.com",
+    "mostVisitedTopic": "Dubai",
+    "moderatelyVisitedTopic": "Abu Dhabi",
+    "leastVisitedTopic": "London"
+  },
+  {
+    "email": "ethan.joshi@example.com",
+    "mostVisitedTopic": "Singapore",
+    "moderatelyVisitedTopic": "Bangkok",
+    "leastVisitedTopic": "Sydney"
+  },
+  {
+    "email": "anya.mehra@example.com",
+    "mostVisitedTopic": "Zurich",
+    "moderatelyVisitedTopic": "Geneva",
+    "leastVisitedTopic": "Tokyo"
+  }
+]

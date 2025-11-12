@@ -68,7 +68,7 @@ export class GeminiClientProvider {
           model: this.model,
           contents: prompt,
           config: {
-            temperature: 0.1,
+            temperature: 0,
             systemInstruction:
               'You are an expert data analyst. Your know everything about Contentstack and Lytics audience screenining platform.', // for more tailored outputs
             thinkingConfig: {
